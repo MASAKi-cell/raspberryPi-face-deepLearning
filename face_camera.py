@@ -1,6 +1,12 @@
 import os
 import cv2
 import buzzer
+import tensorflow as tf
+import numpy as np
+
+
+# 評価結果のロード
+loaded_model = tf.keras.models.load_models('my_model.h5')
 
 # カスケードファイルパス
 cascade_path = os.path.join(
@@ -27,8 +33,8 @@ while True:
     # カメラ画像を読み込む
     _, image = capture.read()
 
-    # raspiのカメラだと反転しているので修正
-    # image = cv2.flip(image, -1)
+    # カメラ反転
+    image = cv2.flip(image, -1)
 
     # OpenCVでグレースケール化して、計算処理を高速化する
     igray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -44,11 +50,29 @@ while True:
             # 顔が検出されたら顔の周りに枠を表示してフレームを表示、引数にはウィンドウ名と表示する画像を指定
             cv2.rectangle(image, (x, y), (x+w, y+h),
                           color, thickness=THICKNESS)
+
+            # 顔画像を切り出し
+            face_image = image[y:y+h, x:x+w]
+
+            # モデルの入力サイズにリサイズ
+            face_image = cv2.resize(face_image, (64, 64))
+
+            # 正規化
+            face_image = face_image / 255.0
+
+            # 4次元テンソルに変換
+            face_image = np.expand_dims(face_image, axis=0)
+
+            # 予測
+            prediction = loaded_model.predict(face_image)
+
+            if prediction[0] >= 0.5:
+                buzzer.setupBuzzer()  # 顔が検出されたらブザーを鳴らす
+                print("特定の人物(A)が検出されました")
+            else:
+                print("特定の人物(A)は検出されませんでした")
+
             cv2.imshow('frame', image)
-
-            buzzer.setupBuzzer()  # 顔が検出されたらブザーを鳴らす
-
-            print("顔が検出されました")
         else:
             # 顔が検出されなかった場合の処理（顔検出時以外もフレームを表示）
             cv2.imshow('frame', image)
