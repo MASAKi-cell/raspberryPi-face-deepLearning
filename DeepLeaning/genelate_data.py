@@ -54,7 +54,8 @@ y_label_test = np.array(y_label_test)
 # x_train, x_test, y_train, y_test = model_selection.train_test_split(
 # x_array_train, y_label_train)  # テストデータと訓練用データを分割
 
-np.save("./x_array_train.npy", x_array_train)  # numpy配列を保存
-np.save("./x_array_test.npy", x_array_test)  # numpy配列を保存
-np.save("./y_label_train.npy", y_label_train)  # numpy配列を保存
-np.save("./y_label_test.npy", y_label_test)  # numpy配列を保存
+# numpy配列を保存
+np.save("./x_array_train.npy", x_array_train)
+np.save("./x_array_test.npy", x_array_test)
+np.save("./y_label_train.npy", y_label_train)
+np.save("./y_label_test.npy", y_label_test)
