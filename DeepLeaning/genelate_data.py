@@ -1,10 +1,9 @@
 # from sklearn import model_selection
 from PIL import Image
-import os
 import glob
 import numpy as np
 
-classes = ["taimei", "other"]
+classes = ["taimei", "man"]
 num_classes = len(classes)
 image_size = 50
 test_data = 45  # テストデータとトレーニング用のデータを分割する
@@ -51,8 +50,6 @@ x_array_test = np.array(x_array_test)
 y_label_train = np.array(y_label_train)
 y_label_test = np.array(y_label_test)
 
-# x_train, x_test, y_train, y_test = model_selection.train_test_split(
-# x_array_train, y_label_train)  # テストデータと訓練用データを分割
 
 # numpy配列を保存
 np.save("./x_array_train.npy", x_array_train)
