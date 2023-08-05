@@ -1,1 +1,6 @@
-# RaspberryPi-face-deepLearning
+# Raspberry Piによる顔認証システム（Python × OpneCV × Tensorflow × Keras）
+
+
+ディープラーニングで特定の人物か否かを判定するトレーニングを実施。<br>
+ラズベリーパイ専用のカメラから、特定の人物かかどうかを判定して、特定の人物かの場合はブザーが鳴るアプリ
+
