@@ -42,3 +42,4 @@
 
 [社内ハッカソンでRaspberry Piとディープラーニングを活用した顔認証を作ったので制作過程を共有する](https://zenn.dev/arsaga/articles/7a82079640542e)
 
+<br>
