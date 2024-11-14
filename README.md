@@ -21,19 +21,17 @@
 
 <br><br>
 
-# 使用技術
+# 使用技術・バージョン情報
 
+| library・language | version | 
+| ---- | ---- | 
+| TensorFlow | 2.13.0 | 
+| TensorFlow Lite | 3.0 | 
+| Keras | 2.13.1 | 
+| React | 18.2.0 | 
+| OpenCV | 4.7.0 |
+| Python | 3.11.3 | 
 
-
-<br><br>
-
-# バージョン情報
-
-- TensorFlow	2.13.0
-- TensorFlow Lite	3.0
-- Keras	2.13.1
-- OpenCV	4.7.0
-- Python	3.11.3
 
 
 <br><br>
